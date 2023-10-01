@@ -1,0 +1,24 @@
+# One CLI to format the code tree - https://github.com/numtide/treefmt
+
+[formatter.terraform]
+# Careful, only terraform 1.3.0 or later accept a list of files.
+# see https://github.com/numtide/treefmt/issues/97
+command = "terraform"
+options = ["fmt"]
+includes = ["*.tf"]
+
+[formatter.shell]
+command = "shfmt"
+options = [
+    "-i",
+    "2",  # indent 2
+    "-s",  # simplify the code
+    "-bn", # Binary ops like && and | may start a line
+    "-ci", # Switch cases will be indented
+    "-w",  # write back to the file
+]
+includes = ["*.sh"]
+
+[formatter.shellcheck]
+command = "shellcheck"
+includes = ["*.sh"]
